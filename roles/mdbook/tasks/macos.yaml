@@ -1,0 +1,5 @@
+---
+- name: "mdbook | Install"
+  community.general.homebrew:
+    name: mdbook
+    state: present

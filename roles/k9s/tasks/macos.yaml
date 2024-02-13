@@ -1,0 +1,5 @@
+---
+- name: "k9s | Install"
+  community.general.homebrew:
+    name: k9s
+    state: present

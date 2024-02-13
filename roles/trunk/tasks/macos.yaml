@@ -1,0 +1,5 @@
+---
+- name: "trunk | Install"
+  community.general.homebrew:
+    name: trunk
+    state: present

@@ -1,0 +1,5 @@
+---
+- name: "bottom | Install"
+  community.general.homebrew:
+    name: bottom
+    state: present

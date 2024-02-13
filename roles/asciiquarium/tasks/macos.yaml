@@ -1,0 +1,5 @@
+---
+- name: "asciiquarium | Install"
+  community.general.homebrew:
+    name: asciiquarium
+    state: present

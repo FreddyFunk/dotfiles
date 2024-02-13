@@ -1,0 +1,10 @@
+---
+- name: "rust | Check if cargo is installed"
+  ansible.builtin.command: "cargo"
+  register: cargo_exists
+  ignore_errors: true
+  changed_when: false
+
+- name: "rust | Install rust via rustup"
+  ansible.builtin.command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+  when: cargo_exists is failed

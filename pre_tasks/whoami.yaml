@@ -1,0 +1,29 @@
+---
+- name: Register Current User
+  ansible.builtin.set_fact:
+    host_user: "{{ ansible_env['USER']}}"
+  when: host_user is not defined
+
+- name: Register Profile 'work_z'
+  ansible.builtin.set_fact:
+    dotfiles_profile: "work_z"
+  when: "'MDEA' in ansible_hostname"
+
+- name: Register Profile 'home'
+  ansible.builtin.set_fact:
+    dotfiles_profile: "home"
+  when: dotfiles_profile is not defined
+
+- name: Add current host to correct ansible host group
+  ansible.builtin.add_host:
+    name: "{{ inventory_hostname }}"
+    groups: "{{ dotfiles_profile }}"
+  changed_when: false
+
+- name: Print assigned group names
+  ansible.builtin.debug:
+    var: group_names
+
+- name: Print control variable for group vars
+  ansible.builtin.debug:
+    var: group_control_variable

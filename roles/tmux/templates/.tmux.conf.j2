@@ -1,0 +1,68 @@
+# fix tpm when tmux is installed with homebrew on macOS
+set-environment -g PATH "/opt/homebrew/bin:/usr/local/bin:/bin:/usr/bin"
+
+# List of plugins
+# Install theme first and tpm last
+set -g @plugin 'catppuccin/tmux'
+set -g @plugin 'olimorris/tmux-pomodoro-plus'
+set -g @plugin 'tmux-plugins/tpm'
+#set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# shell config
+set-option -g default-shell /bin/zsh
+set-option -g history-limit 25000
+set -g mouse on
+
+# for neovim
+set -sg escape-time 10
+set-option -g focus-event on
+# vi for copy mode
+setw -g mode-keys vi
+
+# term colors, these are the correct ones according to neovim checkhealth
+set-option -g default-terminal "screen-256color"
+set -sg terminal-overrides ",*:RGB"
+
+# theme
+set -g @catppuccin_flavour '{{ catppuccin.theme }}'
+
+# pomodoro timer
+#set -g @pomodoro_toggle 'p' # conflicts with tmux default binding
+set -g @pomodoro_on "#[fg=$text_red]🍅 "
+set -g @pomodoro_complete "#[fg=$text_green]🍅 "
+set -g @pomodoro_pause "#[fg=$color_yellow]🍅 "
+set -g @pomodoro_prompt_break "#[fg=$color_green]🕤 ? "
+set -g @pomodoro_prompt_pomodoro "#[fg=$color_gray]🕤 ? "
+set -g @pomodoro_granularity 'on'
+set -g @pomodoro_interval_display "[%s/%s]"
+
+# status bar
+set -g status-left "#{pomodoro_status}"
+#set -g status-style "fg=#665c54"
+#set -g status-left-style "fg=#928374"
+
+#set -g status-bg default
+#set -g status-position bottom
+#set -g status-interval 1
+#set -g status-left ""
+
+# disable status
+# set -g status off
+# set -g status on
+
+# count the panes from 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# reload configuration
+bind-key -r r source-file ~/.tmux.conf
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+#macOS
+run '/opt/homebrew/opt/tpm/share/tpm/tpm'
+# auto install and update plugins on tmux start
+run '/opt/homebrew/opt/tpm/share/tpm/bin/install_plugins'
+
+# linux
+#run '~/.tmux/plugins/tpm/tpm'
+

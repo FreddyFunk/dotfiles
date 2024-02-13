@@ -1,0 +1,5 @@
+---
+- name: Run macOS Tasks
+  ansible.builtin.import_tasks: macos.yaml
+  when: ansible_os_family == 'Darwin'
+

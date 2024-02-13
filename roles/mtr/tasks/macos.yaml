@@ -1,0 +1,5 @@
+---
+- name: "mtr | Install"
+  community.general.homebrew:
+    name: mtr
+    state: present

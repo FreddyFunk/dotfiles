@@ -1,0 +1,5 @@
+---
+- name: "curl | Install"
+  community.general.homebrew:
+    name: curl
+    state: present

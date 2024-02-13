@@ -1,0 +1,5 @@
+---
+- name: "cmatrix | Install"
+  community.general.homebrew:
+    name: cmatrix
+    state: present

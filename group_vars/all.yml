@@ -1,0 +1,11 @@
+git:
+  username: "FreddyFunk"
+  email: "27208977+FreddyFunk@users.noreply.github.com"
+
+# git config for commits in dotfiles repo to prevent leaks of personal email addresses
+git_dotfiles:
+  username: "FreddyFunk"
+  email: "27208977+FreddyFunk@users.noreply.github.com"
+
+catppuccin:
+  theme: "mocha"

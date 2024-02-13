@@ -1,0 +1,10 @@
+---
+- name: "podman | Install"
+  community.general.homebrew:
+    name: podman
+    state: present
+    
+- name: "podman | Install Podman Desktop"
+  community.general.homebrew_cask:
+    name: podman-desktop
+    state: present

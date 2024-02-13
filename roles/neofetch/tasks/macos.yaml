@@ -1,0 +1,5 @@
+---
+- name: "neofetch | Install"
+  community.general.homebrew:
+    name: neofetch
+    state: present

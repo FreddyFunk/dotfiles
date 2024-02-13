@@ -1,0 +1,31 @@
+---
+- name: "git | Install"
+  community.general.homebrew:
+    name: git
+    state: present
+
+- name: "git | Set global Git user name"
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ git.username }}"
+
+- name: "git | Set global Git email"
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git.email }}"
+
+- name: "git | Set dotfiles Git user name"
+  community.general.git_config:
+    name: user.name
+    scope: local
+    value: "{{ git_dotfiles.username }}"
+    repo: "{{ playbook_dir }}"
+
+- name: "git | Set dotfiles Git email"
+  community.general.git_config:
+    name: user.email
+    scope: local
+    value: "{{ git_dotfiles.email }}"
+    repo: "{{ playbook_dir }}"

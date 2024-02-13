@@ -1,0 +1,19 @@
+---
+- name: "zsh | Install"
+  community.general.homebrew:
+    name: zsh
+    state: present
+
+- name: "zsh | Install Oh My Zsh"
+  ansible.builtin.command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  args:
+    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+
+- name: "zsh | Update .zshrc Config"
+  ansible.builtin.copy:
+    src: .zshrc
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+
+# currently not working via ansible
+#- name: "zsh | Update Oh My Zsh"
+#  ansible.builtin.command: /bin/zsh omz update
