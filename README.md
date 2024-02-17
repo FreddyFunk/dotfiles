@@ -1,5 +1,7 @@
 # dotfiles
 
+![image](https://github.com/FreddyFunk/dotfiles/assets/27208977/711d3ead-2e26-4c7b-a31d-ffc0d132ece6)
+
 
 ## Goal
 
