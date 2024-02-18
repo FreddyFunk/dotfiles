@@ -54,10 +54,14 @@ To add encrypt values do the following:
 
 ```bash
 # string
-$ ansible-vault encrypt_string --vault-password-file $HOME/dotfiles/vaultpw "mynewsecret" --name "MY_SECRET_VAR"
+ansible-vault encrypt_string --vault-password-file $HOME/dotfiles/vaultpw "mynewsecret" --name "MY_SECRET_VAR"
 # file
-$ cat myfile.conf | ansible-vault encrypt_string --vault-password-file $HOME/dotfiles/vaultpw --stdin-name "myfile"
+cat myfile.conf | ansible-vault encrypt_string --vault-password-file $HOME/dotfiles/vaultpw --stdin-name "myfile"
 ```
+
+You can pipe the output of ansible-vault directly to the clipboard by appending the following command:
+  - macOS: `| pbcopy`
+  - Linux: `| xclip -selection clipboard`
 
 ## Credits
 
