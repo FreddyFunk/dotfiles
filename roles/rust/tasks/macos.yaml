@@ -5,6 +5,8 @@
   ignore_errors: true
   changed_when: false
 
-- name: "rust | Install rust via rustup"
-  ansible.builtin.command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+- name: "Install"
+  community.general.homebrew:
+    name: rust
+    state: present
   when: cargo_exists is failed
