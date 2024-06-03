@@ -8,3 +8,6 @@
   loop_control:
     loop_var: ssh_key_item
   with_items: "{{ ssh_key | default({}) | dict2items }}"
+
+- name: "Import SSH key"
+  ansible.builtin.command: "ssh-add --apple-use-keychain {{ ansible_env.HOME }}/.ssh/{{ ssh_primary_private_key }}"

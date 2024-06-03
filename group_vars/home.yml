@@ -8,6 +8,8 @@ git:
   username: "FreddyFunk"
   email: "27208977+FreddyFunk@users.noreply.github.com"
 
+ssh_primary_private_key: "home"
+
 ssh_key:
   home: !vault |
     $ANSIBLE_VAULT;1.1;AES256
