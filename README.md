@@ -30,7 +30,7 @@ Currently only `macOS` is supported and tested.
 ## Setup
 
 ```bash
-git clone git@github.com:FreddyFunk/dotfiles.git ~/dotfiles
+git clone https://github.com/FreddyFunk/dotfiles.git ~/dotfiles
 echo "SuperSecurePassword" > ~/dotfiles/vaultpw
 sh ~/dotfiles/init.sh
 ```
