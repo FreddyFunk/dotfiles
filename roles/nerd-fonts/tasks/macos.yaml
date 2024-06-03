@@ -1,8 +1,8 @@
 ---
-- name: "nerd-fonts | Tap Repo"
-  community.general.homebrew_tap:
-    name: homebrew/cask-fonts
-    state: present
+#- name: "nerd-fonts | Tap Repo"
+#  community.general.homebrew_tap:
+#    name: homebrew/cask-fonts
+#    state: present
 
 - name: "nerd-fonts | Install jetbrains-mono"
   community.general.homebrew_cask:
