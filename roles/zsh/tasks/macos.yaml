@@ -4,8 +4,21 @@
     name: zsh
     state: present
 
+# todo: fix privelege escalation on macOS
+#- name: "Ensure zsh is the default shell"
+#  user:
+#    # cannot use {{ansible_user}} on localhost
+#    name: "{{ ansible_env.USER }}"
+#    shell: "/usr/bin/zsh"
+#  become: true
+
+- name: "Download Oh My Zsh installation script"
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_ohmyzsh.sh
+
 - name: "zsh | Install Oh My Zsh"
-  ansible.builtin.command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  ansible.builtin.command: sh /tmp/install_ohmyzsh.sh --unattended
   args:
     creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
 
