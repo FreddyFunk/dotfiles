@@ -63,6 +63,12 @@ You can pipe the output of ansible-vault directly to the clipboard by appending 
   - macOS: `| pbcopy`
   - Linux: `| xclip -selection clipboard`
 
+## Running specific role
+
+´´´bash
+ansible-playbook --vault-password-file ~/dotfiles/vaultpw main.yaml --tags "role_name"
+´´´
+
 ## Credits
 
 This setup is heavily inspired by:
