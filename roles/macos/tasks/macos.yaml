@@ -1,0 +1,8 @@
+---
+- name: Set systems languages
+  community.general.osx_defaults:
+    key: AppleLanguages
+    type: array
+    value:
+      - en
+      - de

@@ -1,6 +1,7 @@
 addon_roles:
   - mdbook
   - chromium-ungoogled
+  - macos
 
 # for debug purposes only
 group_control_variable: "home"
