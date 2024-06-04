@@ -44,6 +44,8 @@
     # nvim setup
     - lazygit
     - neovim
+    # password manager
+    - keepassxc
     # fun
     - asciiquarium
     - cmatrix
