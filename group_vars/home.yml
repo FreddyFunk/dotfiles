@@ -2,6 +2,7 @@ addon_roles:
   - mdbook
   - chromium-ungoogled
   - macos
+  - nextcloud
 
 # for debug purposes only
 group_control_variable: "home"
