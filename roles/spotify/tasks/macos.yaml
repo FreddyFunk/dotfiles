@@ -15,6 +15,7 @@
     path: /Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs
     state: touch
     mode: "0600"
+  changed_when: false
 
 - name: Configure autostart in app settings
   ansible.builtin.lineinfile:
