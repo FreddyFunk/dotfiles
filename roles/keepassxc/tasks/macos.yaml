@@ -4,12 +4,18 @@
     name: keepassxc
     state: present
 
-- name: "create config directory"
+- name: "create config directory if it does not exist"
   ansible.builtin.file:
-    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC"
+    path: "{{ item }}"
     state: directory
+  loop:
+    - "/Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC"
+    - "/Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC"
 
 - name: "Copy config"
   ansible.builtin.template:
     src: keepassxc.ini.j2
-    dest: "/Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC/keepassxc.ini"
+    dest: "{{ item }}/keepassxc.ini"
+  loop:
+    - "/Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC"
+    - "/Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC"

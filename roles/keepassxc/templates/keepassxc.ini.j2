@@ -4,8 +4,13 @@ UpdateCheckMessageShown=true
 RememberLastDatabases=true
 NumberOfRememberedLastDatabases=5
 OpenPreviousDatabasesOnStartup=true
-LastOpenedDatabases="/Users/fred/Nextcloud/KeyPass/Database.kdbx"
-LastActiveDatabase="/Users/fred/Nextcloud/KeyPass/Database.kdbx"
+{# additional line break is required since jinja somehow removes one line break here. Putting quotes around it fixes it but those quotes break the config for KeePassXC. #}
+LastOpenedDatabases={% for item in keepassxc_databases %}{{ item }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+LastActiveDatabase="{{ keepassxc_database_default }}"
+{# Same here... #}
+LastDatabases={% for item in keepassxc_databases %}{{ item }}{% if not loop.last %}, {% endif %}{% endfor %}
+
 
 [PasswordGenerator]
 AdditionalChars="-_="

@@ -7,6 +7,10 @@ addon_roles:
 # for debug purposes only
 group_control_variable: "home"
 
+keepassxc_database_default: "/Users/{{ ansible_env.USER }}/Nextcloud/KeyPass/Database.kdbx"
+keepassxc_databases:
+    - "{{ keepassxc_database_default }}"
+
 git:
   username: "FreddyFunk"
   email: "27208977+FreddyFunk@users.noreply.github.com"
