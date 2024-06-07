@@ -1,0 +1,32 @@
+---
+- name: "Install"
+  community.general.homebrew_cask:
+    name: spotify
+    state: present
+
+- name: "Create config directory if it does not exist"
+  ansible.builtin.file:
+    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/Users/{{ spotify.user }}-user"
+    state: directory
+
+- name: "Create app settings file, if it does not exists"
+  file:
+    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
+    state: touch
+
+- name: "Configure autostart in app settings"
+  ansible.builtin.lineinfile:
+    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
+    regexp: '^app.autostart-configured='
+    line: 'app.autostart-configured=true'
+
+- name: "Disable autostart in app settings"
+  ansible.builtin.lineinfile:
+    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
+    regexp: '^app.autostart-mode='
+    line: 'app.autostart-mode="off"'
+
+- name: "Copy custom user settings"
+  ansible.builtin.template:
+    src: prefs
+    dest: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/Users/{{ spotify.user }}-user/prefs"

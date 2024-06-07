@@ -1,0 +1,6 @@
+connect.dial_devices="[]"
+audio.equalizer_v2=true
+audio.sync_bitrate_enumeration={{ spotify.download_bitrate }}
+audio.play_bitrate_non_metered_migrated=true
+audio.play_bitrate_enumeration={{ spotify.play_bitrate }}
+audio.play_bitrate_non_metered_enumeration={{ spotify.play_bitrate }}
