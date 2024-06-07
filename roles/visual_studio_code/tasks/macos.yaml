@@ -50,4 +50,3 @@
     content: "{{ updated.stdout }}\n"
     dest: "{{ ansible_env.HOME }}/dotfiles/roles/visual_studio_code/files/extensions"
     mode: "0600"
-  delegate_to: localhost
