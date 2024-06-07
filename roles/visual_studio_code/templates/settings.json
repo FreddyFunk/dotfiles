@@ -1,0 +1,9 @@
+{
+    "workbench.colorTheme": "Catppuccin {{ catppuccin.theme_vscode }}",
+    "files.autoSave": "afterDelay",
+    "git.autofetch": true,
+    "redhat.telemetry.enabled": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
+}

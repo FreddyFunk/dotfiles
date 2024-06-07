@@ -44,6 +44,9 @@
     # nvim setup
     - lazygit
     - neovim
+    # IDEs
+    - visual_studio_code
+    - pre_commit
     # password manager
     - keepassxc
     # fun

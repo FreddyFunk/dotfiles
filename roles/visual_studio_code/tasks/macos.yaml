@@ -1,0 +1,53 @@
+---
+- name: Install
+  community.general.homebrew_cask:
+    name: visual-studio-code
+    state: present
+
+- name: Copy settings
+  ansible.builtin.template:
+    src: settings.json
+    dest: /Users/{{ ansible_env.USER }}/Library/Application Support/Code/User/settings.json
+    mode: "0600"
+
+- name: Create symlink for key bindings config
+  ansible.builtin.file:
+    src: "{{ ansible_env.HOME }}/dotfiles/roles/visual_studio_code/files/keybindings.json"
+    dest: /Users/{{ ansible_env.USER }}/Library/Application Support/Code/User/keybindings.json
+    state: link
+
+- name: Gather extensions defined in dotfiles
+  ansible.builtin.command: cat {{ ansible_env.HOME }}/dotfiles/roles/visual_studio_code/files/extensions
+  register: extensions
+  changed_when: extensions.rc != 0
+
+- name: Gather installed extensions
+  ansible.builtin.command: code --list-extensions | sort
+  register: installed
+  changed_when: installed.rc != 0
+
+- name: Calculate missing extensions
+  ansible.builtin.set_fact:
+    missing_extensions: "{{ extensions.stdout_lines | difference(installed.stdout_lines) }}"
+
+- name: Print status
+  ansible.builtin.debug:
+    msg: "Found {{ missing_extensions | length }} missing VSCode extensions: {{ missing_extensions }}"
+
+- name: Install missing extensions
+  ansible.builtin.command: code --install-extension {{ item }}
+  with_items: "{{ missing_extensions }}"
+  when: missing_extensions | length > 0
+  changed_when: missing_extensions | length > 0
+
+- name: Generate updated extensions list
+  ansible.builtin.command: code --list-extensions | sort
+  register: updated
+  changed_when: updated.rc != 0
+
+- name: Update extensions list in dotfiles
+  ansible.builtin.copy:
+    content: "{{ updated.stdout }}\n"
+    dest: "{{ ansible_env.HOME }}/dotfiles/roles/visual_studio_code/files/extensions"
+    mode: "0600"
+  delegate_to: localhost
