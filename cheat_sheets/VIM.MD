@@ -28,4 +28,3 @@
     -   Split screen vertically: `:vsplit`
     -   Search: `/search_term`
     -   Replace: `:%s/old/new/g`
-

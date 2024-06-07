@@ -6,12 +6,12 @@
 
 - name: Register Profile 'work_z'
   ansible.builtin.set_fact:
-    dotfiles_profile: "work_z"
+    dotfiles_profile: work_z
   when: "'MDEA' in ansible_hostname"
 
 - name: Register Profile 'home'
   ansible.builtin.set_fact:
-    dotfiles_profile: "home"
+    dotfiles_profile: home
   when: dotfiles_profile is not defined
 
 - name: Add current host to correct ansible host group

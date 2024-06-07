@@ -1,5 +1,5 @@
 #!/bin/zsh
-set -e 
+set -e
 set -o pipefail
 
 # install brew

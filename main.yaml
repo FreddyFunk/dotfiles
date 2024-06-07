@@ -23,7 +23,7 @@
     - podman
     - rust
     # fonts
-    - nerd-fonts
+    - nerd_fonts
     # terminal and cli tools
     - alacritty
     - bat

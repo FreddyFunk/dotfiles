@@ -1,5 +1,5 @@
 ---
-- name: "Install eloston-chromium"
+- name: Install eloston-chromium
   community.general.homebrew_cask:
     name: eloston-chromium
     state: present

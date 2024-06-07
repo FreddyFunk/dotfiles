@@ -26,4 +26,3 @@
 
     -   **Neovim Cheatsheet**: Check out the [Neovim Cheatsheet](https://github.com/mattmc3/neovim-cheatsheet) for a comprehensive reference supporting various keyboard layouts.
     -   **Cheatsheet.nvim Plugin**: If you want an interactive cheatsheet within Neovim, explore the [cheatsheet.nvim plugin](https://github.com/sudormrfbin/cheatsheet.nvim).
-

@@ -1,3 +1,4 @@
 ---
-- import_tasks: macos.yaml
+- name: Import tasks for macOS
+  ansible.builtin.import_tasks: macos.yaml
   when: ansible_os_family == 'Darwin'

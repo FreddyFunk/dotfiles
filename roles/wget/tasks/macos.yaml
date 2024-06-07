@@ -1,5 +1,5 @@
 ---
-- name: "wget | Install"
+- name: wget | Install
   community.general.homebrew:
     name: wget
     state: present

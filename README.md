@@ -44,7 +44,7 @@ dotu
 
 ## Credentials & Sensitive Data
 
-All kind of credentials like `keys`, `tokens` and `passwords` are securely stored as AES256 encrypted variables using [Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html). 
+All kind of credentials like `keys`, `tokens` and `passwords` are securely stored as AES256 encrypted variables using [Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html).
 
 Securing sensitive data like personal or work related e-mail addresses are also rather important, since this repository available to the public. Therefore, all sensitive data is also encrypted.
 
@@ -75,4 +75,3 @@ This setup is heavily inspired by:
 
 - @techdufus (https://github.com/techdufus/dotfiles)
 - @mischavandenburg (https://github.com/mischavandenburg/dotfiles)
-

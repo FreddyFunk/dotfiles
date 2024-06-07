@@ -1,11 +1,11 @@
 ---
-- name: "rust | Check if cargo is installed"
-  ansible.builtin.command: "cargo"
+- name: rust | Check if cargo is installed
+  ansible.builtin.command: cargo
   register: cargo_exists
   ignore_errors: true
   changed_when: false
 
-- name: "Install"
+- name: Install
   community.general.homebrew:
     name: rust
     state: present

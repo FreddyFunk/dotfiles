@@ -1,5 +1,5 @@
 ---
-- name: "eza | Install"
+- name: eza | Install
   community.general.homebrew:
     name: eza
     state: present

@@ -1,5 +1,5 @@
 ---
-- name: "jq | Install"
+- name: jq | Install
   community.general.homebrew:
     name: jq
     state: present

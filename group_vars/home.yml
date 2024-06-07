@@ -1,21 +1,22 @@
+---
 addon_roles:
   - mdbook
-  - chromium-ungoogled
+  - chromium_ungoogled
   - macos
   - nextcloud
 
 # for debug purposes only
-group_control_variable: "home"
+group_control_variable: home
 
-keepassxc_database_default: "/Users/{{ ansible_env.USER }}/Nextcloud/KeyPass/Database.kdbx"
+keepassxc_database_default: /Users/{{ ansible_env.USER }}/Nextcloud/KeyPass/Database.kdbx
 keepassxc_databases:
-    - "{{ keepassxc_database_default }}"
+  - "{{ keepassxc_database_default }}"
 
 git:
-  username: "FreddyFunk"
-  email: "27208977+FreddyFunk@users.noreply.github.com"
+  username: FreddyFunk
+  email: 27208977+FreddyFunk@users.noreply.github.com
 
-ssh_primary_private_key: "home"
+ssh_primary_private_key: home
 
 ssh_key:
   home: !vault |

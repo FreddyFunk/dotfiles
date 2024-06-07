@@ -118,4 +118,3 @@ alias hacker="cmatrix"
 
 # rust
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
-

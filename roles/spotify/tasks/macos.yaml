@@ -1,32 +1,35 @@
 ---
-- name: "Install"
+- name: Install
   community.general.homebrew_cask:
     name: spotify
     state: present
 
-- name: "Create config directory if it does not exist"
+- name: Create config directory if it does not exist
   ansible.builtin.file:
-    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/Users/{{ spotify.user }}-user"
+    path: /Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/Users/{{ spotify.user }}-user
     state: directory
+    mode: "0700"
 
-- name: "Create app settings file, if it does not exists"
+- name: Create app settings file, if it does not exists
   ansible.builtin.file:
-    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
+    path: /Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs
     state: touch
+    mode: "0600"
 
-- name: "Configure autostart in app settings"
+- name: Configure autostart in app settings
   ansible.builtin.lineinfile:
-    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
-    regexp: '^app.autostart-configured='
-    line: 'app.autostart-configured=true'
+    path: /Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs
+    regexp: ^app.autostart-configured=
+    line: app.autostart-configured=true
 
-- name: "Disable autostart in app settings"
+- name: Disable autostart in app settings
   ansible.builtin.lineinfile:
-    path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
-    regexp: '^app.autostart-mode='
-    line: 'app.autostart-mode="off"'
+    path: /Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs
+    regexp: ^app.autostart-mode=
+    line: app.autostart-mode="off"
 
-- name: "Copy custom user settings"
+- name: Copy custom user settings
   ansible.builtin.template:
     src: prefs
-    dest: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/Users/{{ spotify.user }}-user/prefs"
+    dest: /Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/Users/{{ spotify.user }}-user/prefs
+    mode: "0600"

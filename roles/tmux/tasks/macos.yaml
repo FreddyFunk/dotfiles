@@ -1,15 +1,16 @@
 ---
-- name: "tmux | Install"
+- name: tmux | Install
   community.general.homebrew:
     name: tmux
     state: present
 
-- name: "tmux | Update .tmux.conf Config"
+- name: tmux | Update .tmux.conf Config
   ansible.builtin.template:
     src: .tmux.conf
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    mode: "0600"
 
-- name: "tmux | Install tpm (tmux plugin manager)"
+- name: tmux | Install tpm (tmux plugin manager)
   community.general.homebrew:
     name: tpm
     state: present

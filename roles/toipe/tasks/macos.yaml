@@ -1,5 +1,5 @@
 ---
-- name: "toipe | Install"
+- name: toipe | Install
   community.general.cargo:
     name: toipe
     state: latest

@@ -1,5 +1,5 @@
 ---
-- name: "ripgrep | Install"
+- name: ripgrep | Install
   community.general.homebrew:
     name: ripgrep
     state: present

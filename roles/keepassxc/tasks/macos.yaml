@@ -1,21 +1,23 @@
 ---
-- name: "Install"
+- name: Install
   community.general.homebrew_cask:
     name: keepassxc
     state: present
 
-- name: "create config directory if it does not exist"
+- name: Create config directory if it does not exist
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: "0700"
   loop:
-    - "/Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC"
-    - "/Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC"
+    - /Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC
+    - /Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC
 
-- name: "Copy config"
+- name: Copy config
   ansible.builtin.template:
     src: keepassxc.ini
     dest: "{{ item }}/keepassxc.ini"
+    mode: "06000"
   loop:
-    - "/Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC"
-    - "/Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC"
+    - /Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC
+    - /Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC

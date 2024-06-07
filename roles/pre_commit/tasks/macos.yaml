@@ -1,11 +1,15 @@
 ---
-- name: "Install"
+- name: Install
   community.general.homebrew:
     name: pre-commit
     state: present
 
-- name: "Update hooks"
+- name: Update hooks
   ansible.builtin.command: pre-commit autoupdate
+  register: output
+  changed_when: output.rc != 0
 
-- name: "Install hooks"
+- name: Install hooks
   ansible.builtin.command: pre-commit install
+  register: output
+  changed_when: output.rc != 0
