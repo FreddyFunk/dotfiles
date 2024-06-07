@@ -19,5 +19,5 @@
 
 - name: "alacritty | Update Configuration"
   ansible.builtin.template:
-    src: alacritty.toml.j2
+    src: alacritty.toml
     dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.toml"

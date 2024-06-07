@@ -6,7 +6,7 @@
 
 - name: "tmux | Update .tmux.conf Config"
   ansible.builtin.template:
-    src: .tmux.conf.j2
+    src: .tmux.conf
     dest: "{{ ansible_env.HOME }}/.tmux.conf"
 
 - name: "tmux | Install tpm (tmux plugin manager)"
