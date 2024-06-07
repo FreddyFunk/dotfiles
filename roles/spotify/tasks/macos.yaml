@@ -10,7 +10,7 @@
     state: directory
 
 - name: "Create app settings file, if it does not exists"
-  file:
+  ansible.builtin.file:
     path: "/Users/{{ ansible_env.USER }}/Library/Application Support/Spotify/prefs"
     state: touch
 
