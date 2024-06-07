@@ -1,4 +1,9 @@
 ---
+- name: "create .ssh directory"
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+
 - name: "ssh | Update SSH Keys"
   ansible.builtin.copy:
     dest: "{{ ansible_env.HOME }}/.ssh/{{ ssh_key_item.key }}"
