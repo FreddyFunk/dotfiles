@@ -17,6 +17,14 @@ One of the best tools for automated infrastructure provisioning is Ansible. I ha
 
 Currently only `macOS` is supported and tested.
 
+## Install
+
+```bash
+git clone https://github.com/FreddyFunk/dotfiles.git ~/dotfiles
+echo "SuperSecurePassword" > ~/dotfiles/vaultpw
+sh ~/dotfiles/init.sh
+```
+
 ### macOS Key Binding Conflicts
 
 #### tmux pane resizing vs Misson Control / Dock
@@ -26,14 +34,13 @@ Currently only `macOS` is supported and tested.
 - `Settings -> Keyboard -> Keyboard Shortcuts... -> Mission Control -> Mission Control -> Move left a space` from `ctrl + ←` to `ctrl + cmd + ←`
 - `Settings -> Keyboard -> Keyboard Shortcuts... -> Mission Control -> Mission Control -> Move right a space` from `ctrl + →` to `ctrl + cmd + →`
 
+### macOS Window Management
 
-## Setup
+[Amethyst](https://github.com/ianyh/Amethyst) is used as the Window Manager. While alternatives like [yabai](https://github.com/koekeishiya/yabai)
+are arguably more powerful, [Amethyst can run while keeping macOS System Integrety Protection enabled](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection), which is desired for company devices.
 
-```bash
-git clone https://github.com/FreddyFunk/dotfiles.git ~/dotfiles
-echo "SuperSecurePassword" > ~/dotfiles/vaultpw
-sh ~/dotfiles/init.sh
-```
+Please make sure to manually Update the Accessibilty and Mission Control settings, after manually starting Amethyst for the first time. More details can be found in the
+[Amethyst documentation](https://github.com/ianyh/Amethyst?tab=readme-ov-file#using-amethyst).
 
 ## Update
 

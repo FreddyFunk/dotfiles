@@ -23,3 +23,28 @@
   register: result
   when: oahd.rc != 0
   changed_when: result.rc != 0
+
+- name: Install window manager Amethyst
+  community.general.homebrew_cask:
+    name: amethyst
+    state: present
+
+# - name: Reset Dock to the default state
+#   ansible.builtin.command: defaults delete com.apple.dock
+#   register: result
+#   changed_when: result.rc != 0
+
+- name: Have the Dock show only active apps
+  ansible.builtin.command: defaults write com.apple.dock static-only -bool true
+  register: result
+  changed_when: result.rc != 0
+
+- name: Automatically hide Dock
+  ansible.builtin.command: defaults write com.apple.dock autohide -bool true
+  register: result
+  changed_when: result.rc != 0
+
+- name: Restart Dock
+  ansible.builtin.command: killall Dock
+  register: result
+  changed_when: result.rc != 0
