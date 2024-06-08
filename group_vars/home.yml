@@ -16,6 +16,18 @@ keepassxc_databases:
 git:
   username: FreddyFunk
   email: 27208977+FreddyFunk@users.noreply.github.com
+  home_directory: "{{ ansible_env.HOME }}/git"
+  repositories:
+    - git@github.com:FreddyFunk/take-me-home.git
+    - git@github.com:FreddyFunk/RustyBin.git
+    - git@github.com:FreddyFunk/ddk.git
+    - git@github.com:FreddyFunk/zFile.git
+    - git@github.com:FreddyFunk/custom-cuda-funtime.git
+    - git@github.com:Volume-Data-Suite/vds.git
+    - git@github.com:Volume-Data-Suite/vds-docs.git
+    - git@github.com:Volume-Data-Suite/vds-website.git
+    - git@github.com:Volume-Data-Suite/vdtk.git
+    - git@github.com:Volume-Data-Suite/vds-qt.git
 
 ssh_primary_private_key: home
 

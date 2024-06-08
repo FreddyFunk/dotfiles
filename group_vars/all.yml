@@ -2,6 +2,7 @@
 git:
   username: FreddyFunk
   email: 27208977+FreddyFunk@users.noreply.github.com
+  home_directory: "{{ ansible_env.HOME }}/git"
 
 # git config for commits in dotfiles repo to prevent leaks of personal email addresses
 git_dotfiles:
