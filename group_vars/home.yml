@@ -1,5 +1,6 @@
 ---
 addon_roles:
+  - discord
   - mdbook
   - chromium_ungoogled
   - macos
