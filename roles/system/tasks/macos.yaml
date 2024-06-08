@@ -4,6 +4,14 @@
     update_homebrew: true
     upgrade_all: true
 
+- name: Set systems languages
+  community.general.osx_defaults:
+    key: AppleLanguages
+    type: array
+    value:
+      - en
+      - de
+
 - name: Check if Rosetta 2 is installed
   ansible.builtin.command: /usr/bin/pgrep -q oahd
   register: oahd

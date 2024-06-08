@@ -10,7 +10,7 @@
         - always
 
   roles:
-    # update system
+    # update & configure system
     - system
     # networking foundation
     - curl
