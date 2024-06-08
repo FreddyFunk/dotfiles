@@ -17,7 +17,7 @@
   ansible.builtin.template:
     src: keepassxc.ini
     dest: "{{ item }}/keepassxc.ini"
-    mode: "06000"
+    mode: "0600"
   loop:
     - /Users/{{ ansible_env.USER }}/Library/Application Support/KeePassXC
     - /Users/{{ ansible_env.USER }}/Library/Caches/KeePassXC
