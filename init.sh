@@ -16,7 +16,7 @@ brew update && brew upgrade
 brew install ansible
 
 # configure ssh keys
-ansible-playbook --vault-password-file ~/dotfiles/vaultpw ~/dotfiles/main.yaml --tags "ssh"
+ansible-playbook ~/dotfiles/vaultpw ~/dotfiles/main.yaml --tags "ssh"
 
 # deploy dotfiles
 sh ~/dotfiles/update.sh
