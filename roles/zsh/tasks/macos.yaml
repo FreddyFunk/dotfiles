@@ -23,11 +23,12 @@
   args:
     creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
 
-- name: zsh | Update .zshrc Config
-  ansible.builtin.copy:
+- name: Create symlink for .zshrc config
+  ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/roles/zsh/files/.zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
     state: link
+    force: true
 
 # currently not working via ansible
 # - name: "zsh | Update Oh My Zsh"
