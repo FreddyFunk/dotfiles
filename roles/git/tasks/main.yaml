@@ -41,8 +41,10 @@
   # noqa: latest
   ansible.builtin.git:
     repo: "{{ item }}"
-    dest: "{{ git.home_directory }}/{{ item | regex_search(':([^\\.]+)\\.git', '\\1') | first }}"
+    dest: "{{ git.home_directory }}/{{ item | replace('%20', ' ') | regex_search('[\\w\\s\\.-]+[\\/]+[\\w\\.-]+(?=\\.git|$)') | replace('.git', '') }}"
     clone: true
     update: true
     accept_hostkey: true
+  retries: 5
+  delay: 5
   with_items: "{{ git.repositories }}"
