@@ -4,6 +4,12 @@
     name: visual-studio-code
     state: present
 
+- name: Setup settings directory
+  ansible.builtin.file:
+    path: /Users/{{ ansible_env.USER }}/Library/Application Support/Code/User
+    state: directory
+    mode: "0700"
+
 - name: Copy settings
   ansible.builtin.template:
     src: settings.json
