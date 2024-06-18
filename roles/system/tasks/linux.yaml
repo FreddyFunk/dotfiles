@@ -2,6 +2,7 @@
 - name: Update Fedora/RedHat servers
   ansible.builtin.dnf:
     name: "*"
+    state: latest # noqa package-latest
   become: true
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat' or ansible_distribution == 'Fedora'
 
