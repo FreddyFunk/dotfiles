@@ -13,9 +13,13 @@ I use various devices running macOS, Windows (with WSL) and various Linux Distor
 One of the best tools for automated infrastructure provisioning is Ansible. I happen to have used Ansible to deploy various applications and infrastuctures in the past, so why not deploy my own work environment with it?
 
 
-## Requirements
+## Supported Operating Systems
 
-Currently only `macOS` is supported and tested.
+Currently only are tested:
+- macOS
+  - 14 Sonoma
+- Linux
+  - Fedora 40 KDE Wayland
 
 ## Install
 

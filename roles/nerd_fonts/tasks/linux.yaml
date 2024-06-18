@@ -1,0 +1,12 @@
+---
+- name: Add che/nerd-fonts dnf copr
+  community.general.copr:
+    name: che/nerd-fonts
+    state: enabled
+  become: true
+  when: ansible_distribution == 'Fedora'
+
+- name: Install
+  ansible.builtin.package:
+    name: nerd-fonts
+  become: true

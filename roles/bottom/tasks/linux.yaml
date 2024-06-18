@@ -1,0 +1,12 @@
+---
+- name: Add atim/bottom dnf copr
+  community.general.copr:
+    name: atim/bottom
+    state: enabled
+  become: true
+  when: ansible_distribution == 'Fedora'
+
+- name: Install
+  ansible.builtin.package:
+    name: bottom
+  become: true

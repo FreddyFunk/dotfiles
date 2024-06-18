@@ -1,0 +1,18 @@
+---
+- name: rust | Check if cargo is installed
+  ansible.builtin.command: cargo
+  register: cargo_exists
+  ignore_errors: true
+  changed_when: false
+
+- name: Install cargo
+  ansible.builtin.package:
+    name: cargo
+  become: true
+  when: cargo_exists is failed
+
+- name: Install cargo clippy
+  ansible.builtin.package:
+    name: clippy
+  become: true
+  when: cargo_exists is failed

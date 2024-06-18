@@ -3,24 +3,3 @@
   community.general.homebrew_cask:
     name: alacritty
     state: present
-
-- name: alacritty | Create Confiugration Dicrectory
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/alacritty"
-    state: directory
-    mode: "0700"
-
-- name: alacritty | Download and install Catppucin Theme
-  ansible.builtin.get_url:
-    url: https://github.com/catppuccin/alacritty/raw/main/catppuccin-{{ catppuccin.theme }}.toml
-    dest: ~/.config/alacritty
-    backup: true
-    mode: "0600"
-  # only mark this as changed when the acutal file content changes
-  changed_when: false
-
-- name: alacritty | Update Configuration
-  ansible.builtin.template:
-    src: alacritty.toml
-    mode: "0600"
-    dest: "{{ ansible_env.HOME }}/.config/alacritty/alacritty.toml"

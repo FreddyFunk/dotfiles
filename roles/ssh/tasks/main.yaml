@@ -1,4 +1,24 @@
 ---
+- name: Create .ssh directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: "0700"
+
+- name: ssh | Update SSH Keys
+  ansible.builtin.copy:
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ ssh_key_item.key }}"
+    content: "{{ ssh_key_item.value }}"
+    mode: "0600"
+  no_log: true
+  loop_control:
+    loop_var: ssh_key_item
+  with_items: "{{ ssh_key | default({}) | dict2items }}"
+
 - name: Import tasks for macOS
   ansible.builtin.import_tasks: macos.yaml
   when: ansible_os_family == 'Darwin'
+
+- name: Import tasks for Linux
+  ansible.builtin.import_tasks: linux.yaml
+  when: ansible_system == 'Linux'

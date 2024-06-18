@@ -1,0 +1,7 @@
+---
+# Discord screen sharing is broken on Wayland. Use Discord web app instead.
+# - name: Install the Discord package from flathub for current user
+#   community.general.flatpak:
+#     name: com.discordapp.Discord
+#     state: present
+#     method: user

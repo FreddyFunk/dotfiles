@@ -1,0 +1,7 @@
+---
+# ungoogled chromium is not well maintained via package managers
+# https://copr.fedorainfracloud.org/coprs/
+- name: Install
+  ansible.builtin.package:
+    name: chromium
+  become: true

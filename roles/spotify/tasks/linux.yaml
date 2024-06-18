@@ -1,0 +1,37 @@
+---
+- name: Install the Spotify package from flathub for current user
+  community.general.flatpak:
+    name: com.spotify.Client
+    state: present
+    method: user
+
+- name: Create config directory if it does not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/Users/{{ spotify.user }}-user"
+    state: directory
+    mode: "0700"
+
+- name: Create app settings file, if it does not exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/prefs"
+    state: touch
+    mode: "0600"
+  changed_when: false
+
+- name: Configure autostart in app settings
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/prefs"
+    regexp: ^app.autostart-configured=
+    line: app.autostart-configured=true
+
+- name: Disable autostart in app settings
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/prefs"
+    regexp: ^app.autostart-mode=
+    line: app.autostart-mode="off"
+
+- name: Copy custom user settings
+  ansible.builtin.template:
+    src: prefs
+    dest: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/Users/{{ spotify.user }}-user/prefs"
+    mode: "0600"

@@ -1,0 +1,5 @@
+---
+- name: toipe | Install
+  community.general.cargo:
+    name: toipe
+    state: latest

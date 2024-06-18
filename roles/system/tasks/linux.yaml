@@ -1,0 +1,25 @@
+---
+- name: Update Fedora/RedHat servers
+  ansible.builtin.dnf:
+    name: "*"
+  become: true
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat' or ansible_distribution == 'Fedora'
+
+- name: Update Debian/Ubuntu servers
+  ansible.builtin.apt:
+    upgrade: dist
+    update_cache: true
+  become: true
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install flatpak
+  ansible.builtin.package:
+    name: flatpak
+  become: true
+
+- name: Add the flathub flatpak repository remote to the user installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user

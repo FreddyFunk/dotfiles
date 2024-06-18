@@ -1,0 +1,41 @@
+---
+- name: Import Microsoft RPM keys
+  ansible.builtin.rpm_key:
+    key: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Configure yum for Visual Studio Code
+  ansible.builtin.copy:
+    content: |
+      [code]
+      name=Visual Studio Code
+      baseurl=https://packages.microsoft.com/yumrepos/vscode
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+    dest: /etc/yum.repos.d/vscode.repo
+    mode: "0600"
+  become: true
+
+- name: Install
+  ansible.builtin.package:
+    name: code
+  become: true
+
+- name: Setup settings directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/Code/User"
+    state: directory
+    mode: "0700"
+
+- name: Copy settings
+  ansible.builtin.template:
+    src: settings.json
+    dest: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
+    mode: "0600"
+
+- name: Create symlink for key bindings config
+  ansible.builtin.file:
+    src: "{{ ansible_env.HOME }}/dotfiles/roles/visual_studio_code/files/keybindings.json"
+    dest: "{{ ansible_env.HOME }}/.config/Code/User/keybindings.json"
+    state: link

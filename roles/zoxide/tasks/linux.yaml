@@ -1,0 +1,5 @@
+---
+- name: Install
+  ansible.builtin.package:
+    name: zoxide
+  become: true

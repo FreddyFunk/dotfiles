@@ -3,6 +3,10 @@
   ansible.builtin.import_tasks: macos.yaml
   when: ansible_os_family == 'Darwin'
 
+- name: Import tasks for Linux
+  ansible.builtin.import_tasks: linux.yaml
+  when: ansible_system == 'Linux'
+
 - name: git | Set global Git user name
   community.general.git_config:
     name: user.name

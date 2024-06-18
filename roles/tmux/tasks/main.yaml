@@ -2,3 +2,9 @@
 - name: Import tasks for macOS
   ansible.builtin.import_tasks: macos.yaml
   when: ansible_os_family == 'Darwin'
+
+- name: tmux | Update .tmux.conf Config
+  ansible.builtin.template:
+    src: .tmux.conf
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    mode: "0600"

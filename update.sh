@@ -12,4 +12,4 @@ git remote set-url origin git@github.com:FreddyFunk/dotfiles.git
 git pull --rebase
 
 # run the playbook
-ansible-playbook ~/dotfiles/vaultpw main.yaml
+ansible-playbook main.yaml

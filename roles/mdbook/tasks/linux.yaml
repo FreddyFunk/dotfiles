@@ -1,0 +1,5 @@
+---
+- name: Install
+  community.general.cargo:
+    name: mdbook
+    state: latest

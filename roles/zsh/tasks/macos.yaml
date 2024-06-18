@@ -3,33 +3,3 @@
   community.general.homebrew:
     name: zsh
     state: present
-
-# todo: fix privelege escalation on macOS
-# - name: "Ensure zsh is the default shell"
-#   user:
-#     # cannot use {{ansible_user}} on localhost
-#     name: "{{ ansible_env.USER }}"
-#     shell: "/usr/bin/zsh"
-#   become: true
-
-- name: Download Oh My Zsh installation script
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/install_ohmyzsh.sh
-    mode: "0600"
-
-- name: zsh | Install Oh My Zsh
-  ansible.builtin.command: sh /tmp/install_ohmyzsh.sh --unattended
-  args:
-    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
-
-- name: Create symlink for .zshrc config
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/dotfiles/roles/zsh/files/.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc"
-    state: link
-    force: true
-
-# currently not working via ansible
-# - name: "zsh | Update Oh My Zsh"
-#   ansible.builtin.command: /bin/zsh omz update

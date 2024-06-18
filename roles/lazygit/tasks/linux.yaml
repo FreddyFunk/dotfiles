@@ -1,0 +1,12 @@
+---
+- name: Add atim/lazygit dnf copr
+  community.general.copr:
+    name: atim/lazygit
+    state: enabled
+  become: true
+  when: ansible_distribution == 'Fedora'
+
+- name: Install
+  ansible.builtin.package:
+    name: lazygit
+  become: true

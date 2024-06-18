@@ -3,9 +3,3 @@
   community.general.homebrew:
     name: neovim
     state: present
-
-- name: Neovim | Create a symlink for nvim config directory
-  ansible.builtin.file:
-    src: "{{ ansible_env.HOME }}/dotfiles/roles/neovim/files/nvim"
-    dest: "{{ ansible_env.HOME }}/.config/nvim"
-    state: link
