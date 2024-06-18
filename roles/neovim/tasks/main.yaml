@@ -3,6 +3,10 @@
   ansible.builtin.import_tasks: macos.yaml
   when: ansible_os_family == 'Darwin'
 
+- name: Import tasks for Linux
+  ansible.builtin.import_tasks: linux.yaml
+  when: ansible_system == 'Linux'
+
 - name: Neovim | Create a symlink for nvim config directory
   ansible.builtin.file:
     src: "{{ ansible_env.HOME }}/dotfiles/roles/neovim/files/nvim"
