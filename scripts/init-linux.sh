@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -o pipefail
 
-PACKAGES="git ansible"
+PACKAGES="git ansible ansible-lint"
 
 DNF_CMD=$(command -v dnf)
 YUM_CMD=$(command -v yum)
