@@ -13,3 +13,11 @@ git pull --rebase
 
 # run the playbook
 ansible-playbook main.yaml
+
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  # macOS does not need escalated permissions for brew updates
+  ansible-playbook main.yaml
+else
+  # all other OS require escalated privileges for updating packages
+  ansible-playbook --ask-become-pass main.yaml
+fi

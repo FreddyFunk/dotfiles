@@ -2,11 +2,6 @@
 - name: DotFiles Config
   hosts: localhost
   connection: local
-  become_method: ansible.builtin.sudo
-  vars_prompt:
-    - name: ansible_become_pass
-      prompt: sudo password
-      private: true
 
   pre_tasks:
     - name: Detect Host User
