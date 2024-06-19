@@ -10,8 +10,9 @@ git_dotfiles:
   email: 27208977+FreddyFunk@users.noreply.github.com
 
 catppuccin:
-  theme: mocha
-  theme_vscode: Mocha
+  flavour: Mocha
+  accent: Blue
+  window_decoration_style: Classic
 
 spotify:
   user: !vault |

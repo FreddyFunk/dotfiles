@@ -24,3 +24,74 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
     method: user
+
+- name: Clone system relevant repos
+  # this task has no idempotency by design, since I want to update the repos.
+  # (https://ansible.readthedocs.io/projects/lint/rules/latest/)
+  # noqa: latest
+  ansible.builtin.git:
+    repo: "{{ item }}"
+    dest: "{{ git.home_directory }}/{{ item | replace('%20', ' ') | regex_search('[\\w\\s\\.-]+[\\/]+[\\w\\.-]+(?=\\.git|$)') | replace('.git', '') }}"
+    clone: true
+    update: true
+    accept_hostkey: true
+  retries: 5
+  delay: 5
+  with_items:
+    - https://github.com/catppuccin/kde
+
+- name: Map catppuccin_flavour_kde
+  ansible.builtin.set_fact:
+    catppuccin_flavour_kde: >-
+      {{
+        {
+          'Mocha': 1,
+          'Macchiato': 2,
+          'Frappé': 3,
+          'Latte': 4
+        }[catppuccin.flavour]
+      }}
+
+- name: Map catppuccin_accent_kde
+  ansible.builtin.set_fact:
+    catppuccin_accent_kde: >-
+      {{
+        {
+          'Rosewater': 1,
+          'Flamingo': 2,
+          'Pink': 3,
+          'Mauve': 4,
+          'Red': 5,
+          'Maroon': 6,
+          'Peach': 7,
+          'Yellow': 8,
+          'Green': 9,
+          'Teal': 10,
+          'Sky': 11,
+          'Sapphire': 12,
+          'Blue': 13,
+          'Lavender': 14
+        }[catppuccin.accent]
+      }}
+
+- name: Map catppuccin.window_decoration_style
+  ansible.builtin.set_fact:
+    catppuccin_window_decoration_style_kde: >-
+      {{
+        {
+          'Modern': 1,
+          'Classic': 2
+        }[catppuccin.window_decoration_style]
+      }}
+
+- name: Install catppuccin theme for KDE
+  ansible.builtin.command:
+    argv:
+      - ./install.sh
+      - "{{ catppuccin_flavour_kde }}"
+      - "{{ catppuccin_accent_kde }}"
+      - "{{ catppuccin_window_decoration_style_kde }}"
+      - auto
+  args:
+    chdir: "{{ git.home_directory }}/catppuccin/kde"
+  changed_when: true # finding a proper check is way to complicated

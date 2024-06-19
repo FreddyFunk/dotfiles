@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Catppuccin {{ catppuccin.theme_vscode }}",
+    "workbench.colorTheme": "Catppuccin {{ catppuccin.flavour }}",
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
     "redhat.telemetry.enabled": false,
