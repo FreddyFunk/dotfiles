@@ -39,6 +39,7 @@
     - htop
     - jq
     - k9s
+    - kubectl
     - mtr
     - neofetch
     - ripgrep
