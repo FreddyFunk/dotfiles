@@ -77,7 +77,7 @@ You can pipe the output of ansible-vault directly to the clipboard by appending 
 ## Running specific role
 
 ```bash
-ansible-playbook ~/dotfiles/vaultpw main.yaml --tags "role_name"
+ansible-playbook main.yaml --tags "role_name"
 ```
 
 ## Credits
