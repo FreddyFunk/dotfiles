@@ -3,3 +3,5 @@
   community.general.homebrew_cask:
     name: chromium
     state: present
+    # macOS does not like brew chromium
+    install_options: no-quarantine
