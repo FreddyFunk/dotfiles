@@ -12,8 +12,6 @@ git remote set-url origin git@github.com:FreddyFunk/dotfiles.git
 git pull --rebase
 
 # run the playbook
-ansible-playbook main.yaml
-
 if [[ "$OSTYPE" != "darwin"* ]]; then
   # macOS does not need escalated permissions for brew updates
   ansible-playbook main.yaml
