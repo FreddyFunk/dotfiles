@@ -77,7 +77,11 @@ You can pipe the output of ansible-vault directly to the clipboard by appending 
 ## Running specific role
 
 ```bash
-ansible-playbook main.yaml --tags "role_name"
+dotu "role_name"
+# example for role "chromium"
+dotu chromium
+# example for running multiple roles
+dotu system,ssh,git,chromium
 ```
 
 ## Credits

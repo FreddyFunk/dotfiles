@@ -2,6 +2,8 @@
 set -e
 set -o pipefail
 
+SELECTED_ANSIBLE_ROLES=$1
+
 # got to the dotfile directory
 cd ~/dotfiles
 
@@ -11,11 +13,16 @@ git remote set-url origin git@github.com:FreddyFunk/dotfiles.git
 # update git repo
 git pull --rebase --autostash
 
-# run the playbook
-if [[ "$OSTYPE" == "darwin"* ]]; then
+ANSIBLE_RUN_COMMAND="ansible-playbook"
+if [[ "$OSTYPE" != "darwin"* ]]; then
   # macOS does not need escalated permissions for brew updates
-  ansible-playbook main.yaml
-else
   # all other OS require escalated privileges for updating packages
-  ansible-playbook --ask-become-pass main.yaml
+  ANSIBLE_RUN_COMMAND+=" --ask-become-pass"
+fi
+
+# run the playbook
+if [[ -n "$SELECTED_ANSIBLE_ROLES" ]]; then
+  $ANSIBLE_RUN_COMMAND main.yaml --tags $SELECTED_ANSIBLE_ROLES
+else
+  $ANSIBLE_RUN_COMMAND main.yaml
 fi
