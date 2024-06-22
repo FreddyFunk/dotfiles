@@ -9,7 +9,7 @@ cd ~/dotfiles
 git remote set-url origin git@github.com:FreddyFunk/dotfiles.git
 
 # update git repo
-git pull --rebase
+git pull --rebase --autostash
 
 # run the playbook
 if [[ "$OSTYPE" == "darwin"* ]]; then
