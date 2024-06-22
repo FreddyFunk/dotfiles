@@ -2,7 +2,7 @@
 addon_roles:
   - discord
   - mdbook
-  - chromium_ungoogled
+  - chromium
   - nextcloud
 
 # for debug purposes only

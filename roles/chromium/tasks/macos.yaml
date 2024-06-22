@@ -1,0 +1,5 @@
+---
+- name: Install chromium
+  community.general.homebrew_cask:
+    name: chromium
+    state: present
