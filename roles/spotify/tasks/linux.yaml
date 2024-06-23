@@ -15,8 +15,9 @@
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/prefs"
     state: touch
-    mode: "0600"
-  changed_when: false
+    mode: "0644"
+    modification_time: preserve
+    access_time: preserve
 
 - name: Configure autostart in app settings
   ansible.builtin.lineinfile:
@@ -34,4 +35,4 @@
   ansible.builtin.template:
     src: prefs
     dest: "{{ ansible_env.HOME }}/.var/app/com.spotify.Client/config/spotify/Users/{{ spotify.user }}-user/prefs"
-    mode: "0600"
+    mode: "0644"
