@@ -15,10 +15,8 @@
     loop_var: ssh_key_item
   with_items: "{{ ssh_key | default({}) | dict2items }}"
 
-- name: Import tasks for macOS
-  ansible.builtin.import_tasks: macos.yaml
-  when: ansible_os_family == 'Darwin'
-
-- name: Import tasks for Linux
-  ansible.builtin.import_tasks: linux.yaml
-  when: ansible_system == 'Linux'
+- name: Create ssh config file
+  ansible.builtin.template:
+    src: config
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    mode: "0600"

@@ -1,5 +1,0 @@
----
-- name: Import SSH key
-  ansible.builtin.command: ssh-add {{ ansible_env.HOME }}/.ssh/{{ ssh_primary_private_key }}
-  register: output
-  changed_when: output.rc != 0
