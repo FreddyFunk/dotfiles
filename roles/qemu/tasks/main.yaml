@@ -1,0 +1,4 @@
+---
+- name: Import tasks for Linux
+  ansible.builtin.import_tasks: linux.yaml
+  when: ansible_system == 'Linux'

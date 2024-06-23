@@ -1,0 +1,34 @@
+---
+# https://docs.fedoraproject.org/en-US/quick-docs/virtualization-getting-started/
+- name: Install dnf group @virtualization (qemu, virt-manager, ...)
+  ansible.builtin.package:
+    name: "@virtualization"
+  become: true
+
+- name: Create libvirt hooks directory
+  ansible.builtin.file:
+    path: /etc/libvirt/hooks
+    state: directory
+    mode: "0700"
+  become: true
+
+- name: Install libvirt hook for dynamically binding GPU to vfio drivres
+  ansible.builtin.copy:
+    src: qemu
+    dest: /etc/libvirt/hooks/qemu
+    mode: "0700"
+  become: true
+
+- name: Make sure libvirtd is running and starts on boot
+  ansible.builtin.systemd_service:
+    name: libvirtd
+    state: restarted
+    enabled: true
+  become: true
+
+- name: Add IOMMU as kernel paramter via GRUP2 config
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: ^GRUB_CMDLINE_LINUX_DEFAULT=
+    line: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on"
+  become: true

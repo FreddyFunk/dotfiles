@@ -4,6 +4,7 @@ addon_roles:
   - mdbook
   - chromium
   - nextcloud
+  - qemu
 
 # for debug purposes only
 group_control_variable: home
