@@ -1,0 +1,6 @@
+---
+- name: Install the Obsidian package from flathub for current user
+  community.general.flatpak:
+    name: md.obsidian.Obsidian
+    state: present
+    method: user

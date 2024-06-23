@@ -50,6 +50,8 @@
     - pre_commit
     # password manager
     - keepassxc
+    # notes
+    - obsidian
     # fun
     - asciiquarium
     - cmatrix
