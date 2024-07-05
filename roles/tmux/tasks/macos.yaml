@@ -1,10 +1,10 @@
 ---
-- name: tmux | Install
+- name: Install
   community.general.homebrew:
     name: tmux
     state: present
 
-- name: tmux | Install tpm (tmux plugin manager)
+- name: Install tpm (tmux plugin manager)
   community.general.homebrew:
     name: tpm
     state: present

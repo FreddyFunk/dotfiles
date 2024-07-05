@@ -5,6 +5,12 @@
   become: true
 
 - name: Install tpm (tmux plugin manager)
-  ansible.builtin.package:
-    name: tpm
-  become: true
+  # this task has no idempotency by design, since I want to update the repos.
+  # (https://ansible.readthedocs.io/projects/lint/rules/latest/)
+  # noqa: latest
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+    clone: true
+    update: true
+    accept_hostkey: true
