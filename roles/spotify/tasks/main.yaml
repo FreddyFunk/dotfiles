@@ -5,4 +5,5 @@
 
 - name: Import tasks for Linux
   ansible.builtin.import_tasks: linux.yaml
-  when: ansible_system == 'Linux'
+  # only x86 is available, use web app on ARM and RISC-V instead
+  when: ansible_system == 'Linux' and ansible_architecture == "x86_64"
