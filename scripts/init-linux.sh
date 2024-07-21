@@ -12,11 +12,11 @@ set -e
 echo "installing: $PACKAGES"
 
 if [[ ! -z $DNF_CMD ]]; then
-sudo dnf install $PACKAGES
+sudo dnf install $PACKAGES -y
 elif [[ ! -z $APT_GET_CMD ]]; then
-sudo apt-get $PACKAGES
+sudo apt-get $PACKAGES -y
 elif [[ ! -z $YUM_CMD ]]; then
-sudo yum install $PACKAGES
+sudo yum install $PACKAGES -y
 else
 echo "no package manager found for installing $PACKAGE"
 exit 1;
