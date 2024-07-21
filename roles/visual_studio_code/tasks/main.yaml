@@ -29,6 +29,7 @@
   ansible.builtin.command: code --install-extension {{ item }}
   with_items: "{{ missing_extensions }}"
   when: missing_extensions | length > 0
+  retries: 5
   changed_when: missing_extensions | length > 0
 
 - name: Generate updated extensions list
