@@ -3,3 +3,9 @@
   ansible.builtin.package:
     name: podman
   become: true
+
+- name: Install the Podman Desktop package from flathub for current user
+  community.general.flatpak:
+    name: io.podman_desktop.PodmanDesktop
+    state: present
+    method: user
