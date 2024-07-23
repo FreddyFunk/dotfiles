@@ -27,6 +27,7 @@ git:
     - git@github.com:Volume-Data-Suite/vds-website.git
     - git@github.com:Volume-Data-Suite/vdtk.git
     - git@github.com:Volume-Data-Suite/vds-qt.git
+    - git@github.com:FreddyFunk/HUBba-HUBba.git
 
 ssh_primary_private_key: home
 
